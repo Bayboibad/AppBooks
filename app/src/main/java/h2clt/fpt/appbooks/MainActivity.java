@@ -1,33 +1,24 @@
-package com.example.assignmentapp;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+package h2clt.fpt.appbooks.screen;
 
 import android.annotation.SuppressLint;
-import android.app.Notification;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.assignmentapp.adapter.ComicAdapter;
-import com.example.assignmentapp.dialog.DialogLoading;
-import com.example.assignmentapp.model.ComicModel;
-import com.example.assignmentapp.model.UserModel;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+import h2clt.fpt.appbooks.R;
+import h2clt.fpt.appbooks.adapter.ComicAdapter;
+import h2clt.fpt.appbooks.dialog.DialogLoading;
+import h2clt.fpt.appbooks.model.ComicModel;
+import h2clt.fpt.appbooks.model.UserModel;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -42,17 +33,15 @@ import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import io.socket.client.IO;
 import io.socket.client.Socket;
-import io.socket.emitter.Emitter;
 
 public class MainActivity extends AppCompatActivity {
-    private final String BASE_URL = "https://ncgmgl-2806.csb.app/";
+    private final String BASE_URL = "http://10.0.2.2:3000/";
     //private final String BASE_URL = "http://192.168.1.4:2806/";
     //private final String BASE_URL = "http://192.168.137.27:2806/";
     public TextView tvUsername;
@@ -61,15 +50,16 @@ public class MainActivity extends AppCompatActivity {
     public GridView grComic;
     private DialogLoading dialogLoading;
 
+    public SwipeRefreshLayout sRL;
     private Socket mSocket;
     {
         try {
-            mSocket = IO.socket("http://192.168.1.4:2806");
+            mSocket = IO.socket("http://10.0.2.2:3000");
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
     }
-    private NotificationReceiver notificationReceiver;
+
 
     @SuppressLint({"WrongViewCast", "MissingInflatedId", "SetTextI18n"})
     @Override
@@ -83,8 +73,15 @@ public class MainActivity extends AppCompatActivity {
         tvUsername = findViewById(R.id.tvUsername);
         btnNotification = findViewById(R.id.btnNotification);
         btnAccount = findViewById(R.id.btnAccount);
-        btnRefresh = findViewById(R.id.btnRefresh);
         grComic = findViewById(R.id.grComic);
+        sRL = findViewById(R.id.swiflayout);
+        sRL.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getWebPage(grComic);
+                sRL.setRefreshing(false);
+            }
+        });
         // Nhận dữ liệu từ Intent
         Bundle bundle = getIntent().getExtras();
         startService(new Intent(this, SocketService.class));
@@ -122,25 +119,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
-            btnNotification.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent= new Intent(getApplicationContext(),NotificationActivity.class);
-                    startActivity(intent);
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("userLogin",user);
-                    intent.putExtras(bundle);
-                    startActivity(intent);
-                    finish();
-                }
-            });
-            btnRefresh.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    getWebPage(grComic);
-                }
-            });
-
         }
         getWebPage(grComic);
     }
@@ -148,11 +126,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        // Dừng dịch vụ khi Activity bị hủy
-        //unregisterReceiver(notificationReceiver);
         stopService(new Intent(this, SocketService.class));
-
-        //mSocket.off();
     }
     void getWebPage(GridView gridView) {
         ExecutorService service = Executors.newSingleThreadExecutor();

@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-<uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+
+
     <application
         android:allowBackup="true"
         android:usesCleartextTraffic="true"
@@ -9,15 +15,40 @@
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/logo_comic"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppBooks"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".screen.ChangeInformationActivity"
+            android:exported="false" />
+        <service
+            android:name=".screen.SocketService"
+            android:exported="false" />
+        <activity
+            android:name=".screen.AccountActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screen.ContentImageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screen.DetailsComicActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screen.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screen.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screen.MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screen.SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

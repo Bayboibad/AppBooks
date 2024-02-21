@@ -1,4 +1,4 @@
-package com.example.assignmentapp.api;
+package h2clt.fpt.appbooks.api;
 
 public class ConstUser {
 

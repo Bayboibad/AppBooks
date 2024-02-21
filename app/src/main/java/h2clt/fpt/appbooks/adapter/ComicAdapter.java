@@ -1,4 +1,4 @@
-package com.example.assignmentapp.adapter;
+package h2clt.fpt.appbooks.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,15 +7,16 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 
-import com.example.assignmentapp.R;
-import com.example.assignmentapp.model.ComicModel;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import h2clt.fpt.appbooks.R;
+import h2clt.fpt.appbooks.model.ComicModel;
+
 public class ComicAdapter extends ArrayAdapter<ComicModel> {
 
-    private final String BASE_URL = "https://ncgmgl-2806.csb.app/";
+    private final String BASE_URL = "http://10.0.2.2:3000/";
     //private final String BASE_URL = "http://192.168.1.4:2806/";
     //private final String BASE_URL = "http://192.168.137.27:2806/";
     public ComicAdapter(Context context, List<ComicModel> comics) {

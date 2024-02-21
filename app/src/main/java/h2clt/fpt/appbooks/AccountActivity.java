@@ -1,7 +1,4 @@
-package com.example.assignmentapp;
-
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
+package h2clt.fpt.appbooks.screen;
 
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
@@ -12,17 +9,21 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.assignmentapp.model.UserModel;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.squareup.picasso.Picasso;
+
+import h2clt.fpt.appbooks.R;
+import h2clt.fpt.appbooks.model.UserModel;
 
 public class AccountActivity extends AppCompatActivity {
     ImageView imgAvt;
     TextView tvName;
     ImageButton btnBack;
     Button btnChangeInformation,btnLogout;
-    private final String BASE_URL = "https://ncgmgl-2806.csb.app/";
+    private final String BASE_URL = "http://10.0.2.2:3000/";
 
     //private final String BASE_URL = "http://192.168.1.4:2806/";
 

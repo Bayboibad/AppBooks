@@ -1,49 +1,31 @@
-package com.example.assignmentapp;
-
-import androidx.appcompat.app.AppCompatActivity;
+package h2clt.fpt.appbooks.screen;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.assignmentapp.api.ApiUserService;
-import com.example.assignmentapp.model.UserModel;
+import androidx.appcompat.app.AppCompatActivity;
+
+import h2clt.fpt.appbooks.R;
+import h2clt.fpt.appbooks.api.ApiUserService;
+import h2clt.fpt.appbooks.model.UserModel;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private final String BASE_URL = "https://ncgmgl-2806.csb.app/";
+    private final String BASE_URL = "http://10.0.2.2:3000/";
 
     //private final String BASE_URL = "http://192.168.1.4:2806/";
     //private final String BASE_URL = "http://192.168.137.27:2806/";

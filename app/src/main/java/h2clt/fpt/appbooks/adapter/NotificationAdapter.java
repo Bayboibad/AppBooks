@@ -1,4 +1,4 @@
-package com.example.assignmentapp.adapter;
+package h2clt.fpt.appbooks.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,10 +7,11 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.example.assignmentapp.R;
-import com.example.assignmentapp.model.NotificationModel;
 
 import java.util.List;
+
+import h2clt.fpt.appbooks.R;
+import h2clt.fpt.appbooks.model.NotificationModel;
 
 public class NotificationAdapter extends ArrayAdapter<NotificationModel> {
 

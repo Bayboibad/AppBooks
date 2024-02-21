@@ -1,16 +1,19 @@
-package com.example.assignmentapp;
-
-import androidx.appcompat.app.AppCompatActivity;
+package h2clt.fpt.appbooks.screen;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import h2clt.fpt.appbooks.R;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_splash_screen);
 
         new Handler().postDelayed(new Runnable() {

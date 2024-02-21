@@ -1,6 +1,4 @@
-package com.example.assignmentapp;
-
-import androidx.appcompat.app.AppCompatActivity;
+package h2clt.fpt.appbooks.screen;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,15 +6,17 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.assignmentapp.adapter.ContentImageAdapter;
-import com.example.assignmentapp.model.ComicModel;
-import com.example.assignmentapp.model.UserModel;
+import androidx.appcompat.app.AppCompatActivity;
+
+import h2clt.fpt.appbooks.R;
+import h2clt.fpt.appbooks.adapter.ContentImageAdapter;
+import h2clt.fpt.appbooks.model.ComicModel;
+import h2clt.fpt.appbooks.model.UserModel;
 
 public class ContentImageActivity extends AppCompatActivity {
 
-    private final String BASE_URL = "https://ncgmgl-2806.csb.app/";
+    private final String BASE_URL = "http://10.0.2.2:3000/";
 
     //private final String BASE_URL = "http://192.168.1.4:2806/";
     //private final String BASE_URL = "http://192.168.137.27:2806/";
