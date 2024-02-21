@@ -1,4 +1,4 @@
-package com.example.assignmentapp.model;
+package h2clt.fpt.appbooks.model;
 
 import java.io.Serializable;
 import java.util.List;

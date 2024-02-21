@@ -1,4 +1,4 @@
-package com.example.assignmentapp.adapter;
+package h2clt.fpt.appbooks.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,8 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.assignmentapp.R;
-import com.example.assignmentapp.model.CommentModel;
 import com.squareup.picasso.Picasso;
 
 import java.text.ParseException;
@@ -18,9 +16,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import h2clt.fpt.appbooks.R;
+import h2clt.fpt.appbooks.model.CommentModel;
+
 public class CommentAdapter extends ArrayAdapter<CommentModel> {
 
-    private final String BASE_URL = "https://ncgmgl-2806.csb.app/";
+    private final String BASE_URL = "http://10.0.2.2:3000/";
 
     //private final String BASE_URL = "http://192.168.1.4:2806/";
     //private final String BASE_URL = "http://192.168.137.27:2806/";

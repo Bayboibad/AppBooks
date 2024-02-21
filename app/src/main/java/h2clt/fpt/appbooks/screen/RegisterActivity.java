@@ -1,16 +1,6 @@
-package com.example.assignmentapp;
+package h2clt.fpt.appbooks.screen;
 
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
-
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -31,10 +21,16 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.assignmentapp.api.ApiUserService;
-import com.example.assignmentapp.api.ConstUser;
-import com.example.assignmentapp.api.RealPathUtil;
-import com.example.assignmentapp.model.UserModel;
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+
 import com.google.android.material.textfield.TextInputEditText;
 
 import org.json.JSONException;
@@ -56,6 +52,11 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import h2clt.fpt.appbooks.R;
+import h2clt.fpt.appbooks.api.ApiUserService;
+import h2clt.fpt.appbooks.api.ConstUser;
+import h2clt.fpt.appbooks.api.RealPathUtil;
+import h2clt.fpt.appbooks.model.UserModel;
 import io.socket.client.IO;
 import io.socket.client.Socket;
 import io.socket.emitter.Emitter;
@@ -68,7 +69,7 @@ import retrofit2.Response;
 
 public class RegisterActivity extends AppCompatActivity {
 
-     private final String BASE_URL = "https://ncgmgl-2806.csb.app/";
+     private final String BASE_URL = "http://10.0.2.2:3000/";
 
     //private final String BASE_URL = "http://192.168.1.4:2806/";
 
@@ -80,7 +81,7 @@ public class RegisterActivity extends AppCompatActivity {
     private Socket mSocket;
     {
         try {
-            mSocket = IO.socket("https://ncgmgl-2806.csb.app");
+            mSocket = IO.socket("http://10.0.2.2:3000");
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
@@ -125,6 +126,7 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_register);
         initUI();
         LoadDSUser();
@@ -284,31 +286,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
     void postNotify(String title, String content){
-        // Khởi tạo layout cho Notify
-        Notification customNotification = new NotificationCompat.Builder(RegisterActivity.this, NotifyConfig.CHANEL_ID)
-                .setSmallIcon(android.R.drawable.ic_input_add)
-                .setContentTitle( title )
-                .setContentText(content)
-                .setAutoCancel(true)
-                .build();
-        // Khởi tạo Manager để quản lý notify
-        NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(RegisterActivity.this);
 
-        // Cần kiểm tra quyền trước khi hiển thị notify
-        if (ActivityCompat.checkSelfPermission(RegisterActivity.this,
-                android.Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
-
-            // Gọi hộp thoại hiển thị xin quyền người dùng
-            ActivityCompat.requestPermissions(RegisterActivity.this,
-                    new String[]{android.Manifest.permission.POST_NOTIFICATIONS}, 999999);
-            Toast.makeText(RegisterActivity.this, "Chưa cấp quyền", Toast.LENGTH_SHORT).show();
-            return; // thoát khỏi hàm nếu chưa được cấp quyền
-        }
-        // nếu đã cấp quyền rồi thì sẽ vượt qua lệnh if trên và đến đây thì hiển thị notify
-        // mỗi khi hiển thị thông báo cần tạo 1 cái ID cho thông báo riêng
-        int id_notiy = (int) new Date().getTime();// lấy chuỗi time là phù hợp
-        //lệnh hiển thị notify
-        notificationManagerCompat.notify(id_notiy , customNotification);
     }
 
     void LoadDSUser(){

@@ -1,14 +1,6 @@
-package com.example.assignmentapp;
+package h2clt.fpt.appbooks.screen;
 
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
-
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -27,10 +19,19 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.assignmentapp.api.ApiUserService;
-import com.example.assignmentapp.api.ConstUser;
-import com.example.assignmentapp.api.RealPathUtil;
-import com.example.assignmentapp.model.UserModel;
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
+import h2clt.fpt.appbooks.R;
+import h2clt.fpt.appbooks.api.ApiUserService;
+import h2clt.fpt.appbooks.api.ConstUser;
+import h2clt.fpt.appbooks.api.RealPathUtil;
+import h2clt.fpt.appbooks.model.UserModel;
 import com.google.android.material.textfield.TextInputEditText;
 import com.squareup.picasso.Picasso;
 
@@ -49,7 +50,7 @@ import retrofit2.Response;
 
 public class ChangeInformationActivity extends AppCompatActivity {
 
-    private final String BASE_URL = "https://ncgmgl-2806.csb.app/";
+    private final String BASE_URL = "http://10.0.2.2:3000/";
 
     //private final String BASE_URL = "http://192.168.1.4:2806/";
     //private final String BASE_URL = "http://192.168.137.27:2806/";
@@ -301,6 +302,7 @@ public class ChangeInformationActivity extends AppCompatActivity {
     }
 
     private void initUI() {
+
         edFullName = findViewById(R.id.edFullNameUpdate);
         edUsername = findViewById(R.id.edUsernameUpdate);
         edEmail = findViewById(R.id.edEmailUpdate);

@@ -7,21 +7,13 @@
     android:orientation="vertical"
     android:background="#108363"
     android:gravity="center"
-    tools:context=".SplashScreenActivity">
+    tools:context=".screen.SplashScreenActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nguyễn Cao Cường"
-        android:textSize="25dp"
-        android:textColor="@color/white"
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:src="@drawable/logo_comic"
         android:layout_gravity="center"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="PH28957"
-        android:textSize="25dp"
-        android:textColor="@color/white"
-        android:layout_gravity="center"/>
+
 
 </LinearLayout>

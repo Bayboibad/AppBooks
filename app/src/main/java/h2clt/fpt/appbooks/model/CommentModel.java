@@ -1,6 +1,4 @@
-package com.example.assignmentapp.model;
-
-import java.util.Date;
+package h2clt.fpt.appbooks.model;
 
 public class CommentModel {
 

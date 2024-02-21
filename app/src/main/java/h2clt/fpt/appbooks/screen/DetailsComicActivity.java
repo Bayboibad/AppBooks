@@ -1,6 +1,4 @@
-package com.example.assignmentapp;
-
-import androidx.appcompat.app.AppCompatActivity;
+package h2clt.fpt.appbooks.screen;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -16,10 +14,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.assignmentapp.adapter.CommentAdapter;
-import com.example.assignmentapp.model.ComicModel;
-import com.example.assignmentapp.model.CommentModel;
-import com.example.assignmentapp.model.UserModel;
+import androidx.appcompat.app.AppCompatActivity;
+
+import h2clt.fpt.appbooks.R;
+import h2clt.fpt.appbooks.adapter.CommentAdapter;
+import h2clt.fpt.appbooks.model.ComicModel;
+import h2clt.fpt.appbooks.model.CommentModel;
+import h2clt.fpt.appbooks.model.UserModel;
 import com.google.android.material.textfield.TextInputEditText;
 import com.squareup.picasso.Picasso;
 
@@ -49,11 +50,10 @@ import java.util.concurrent.Executors;
 
 import io.socket.client.IO;
 import io.socket.client.Socket;
-import io.socket.emitter.Emitter;
 
 public class DetailsComicActivity extends AppCompatActivity {
 
-    private final String BASE_URL = "https://ncgmgl-2806.csb.app/";
+    private final String BASE_URL = "http://10.0.2.2:3000/";
 
     //private final String BASE_URL = "http://192.168.1.4:2806/";
     //private final String BASE_URL = "http://192.168.137.27:2806/";
@@ -74,7 +74,7 @@ public class DetailsComicActivity extends AppCompatActivity {
     private Socket mSocket;
     {
         try {
-            mSocket = IO.socket("https://ncgmgl-2806.csb.app");
+            mSocket = IO.socket("http://10.0.2.2:3000");
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
