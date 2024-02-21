@@ -48,6 +48,7 @@ dependencies {
 
     implementation ("com.github.bumptech.glide:glide:4.16.0")
     implementation ("com.squareup.picasso:picasso:2.8")
+    implementation ("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
     implementation("io.socket:socket.io-client:2.0.0") {
         exclude(group = "org.json", module = "json")

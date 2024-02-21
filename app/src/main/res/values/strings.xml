@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AppBooks</string>
+    <string name="link_api">http://10.0.2.2:3000/</string>
+
 </resources>
